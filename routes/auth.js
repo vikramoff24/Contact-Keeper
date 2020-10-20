@@ -13,8 +13,8 @@ router.get("/", (req, res) => {
 // @desc Auth user & get token
 // @access Public
 
-router.get("/", (req, res) => {
+router.post("/", (req, res) => {
   res.send("Log in user");
 });
 
-module.export = router;
+module.exports = router;
