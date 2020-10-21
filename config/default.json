@@ -1,5 +1,5 @@
-//for Global variable (mongoDB) from config package
-//can access the config package by just creating default.js file
+
+
 {
 "mongoURI":"mongodb+srv://vikram123:vikram123@contactkeeper.pk99b.mongodb.net/<dbname>?retryWrites=true&w=majority"
 }
