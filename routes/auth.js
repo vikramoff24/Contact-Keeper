@@ -5,14 +5,23 @@ const { check, validationResult } = require("express-validator"); //from Express
 const bcrypt = require("bcryptjs"); //For Hashing the password.
 const jwt = require("jsonwebtoken");
 const config = require("config");
+const auth = require("../middleware/auth"); // this is brought to the route which need projection
+
 const User = require("../models/User");
 
 // @route GET api/auth
 // @desc Get the logged in user
 // @access Private
 
-router.get("/", (req, res) => {
-  res.send("Get logged in user");
+//passing the middleware here.
+router.get("/", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password"); //.select help us to avoid something from the database.
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
 });
 
 // @route POST api/auth
@@ -49,6 +58,7 @@ router.post(
         res.status(400).json({ msg: "Invaild Credentials" });
       }
 
+      //jwt for the user who tries to login
       const payload = {
         user: {
           id: user.id,

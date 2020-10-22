@@ -37,7 +37,7 @@ router.post(
       let user = await User.findOne({ email }); //email is actually email:email
 
       if (user) {
-        return res.status(400).json({ msg: "User already exists" });
+        return res.status(400).json({ msg: "User already exists" }); //400 is bad request
       }
       //creating new instance of the user
       user = new User({
@@ -62,7 +62,7 @@ router.post(
         payload,
         config.get("jwtSecret"),
         {
-          expiresIn: 36000,
+          expiresIn: 36000, //options
         },
         (err, token) => {
           if (err) throw err;
