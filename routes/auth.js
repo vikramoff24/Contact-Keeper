@@ -13,9 +13,9 @@ const User = require("../models/User");
 // @desc Get the logged in user
 // @access Private
 
-//passing the middleware here.
+//passing the middleware here. (Protected Route)
 router.get("/", auth, async (req, res) => {
-  try {
+  try { //req.user is from the middleware.
     const user = await User.findById(req.user.id).select("-password"); //.select help us to avoid something from the database.
     res.json(user);
   } catch (err) {
