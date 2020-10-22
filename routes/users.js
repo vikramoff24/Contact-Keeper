@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator"); //from Express validator
-const bcrypt = require("bcryptjs");
-
+const bcrypt = require("bcryptjs"); //For Hashing the password.
+const jwt = require("jsonwebtoken");
+const config = require("config");
 //Model
 const User = require("../models/User");
 
@@ -50,7 +51,23 @@ router.post(
 
       await user.save();
 
-      res.send("User saved");
+      //For sending (data) in the token
+      const payload = {
+        user: {
+          id: user.id,
+        },
+      };
+      jwt.sign(
+        payload,
+        config.get("jwtSecret"),
+        {
+          expiresIn: 36000,
+        },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        }
+      );
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");

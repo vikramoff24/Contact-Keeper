@@ -1,7 +1,7 @@
 //mongoose code
 
 const mongoose = require("mongoose");
-const config = require("config");
+const config = require("config"); //this directly access default.json file
 const db = config.get("mongoURI");
 
 //mongoose returns promises.
