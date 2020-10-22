@@ -23,6 +23,7 @@ router.post(
     ).isLength({ min: 6 }),
   ],
   async (req, res) => {
+    //code for returning error is any
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
