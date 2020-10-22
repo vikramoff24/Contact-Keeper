@@ -3,6 +3,9 @@
 const express = require("express");
 const router = express.Router();
 
+//Contact model
+
+const Contact = require("../models/Contact");
 // @route    GET api/contacts
 // @desc     Get all users contacts
 // @access   Private
