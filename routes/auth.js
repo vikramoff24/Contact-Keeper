@@ -5,6 +5,7 @@ const { check, validationResult } = require("express-validator"); //from Express
 const bcrypt = require("bcryptjs"); //For Hashing the password.
 const jwt = require("jsonwebtoken");
 const config = require("config");
+const User = require("../models/User");
 
 // @route GET api/auth
 // @desc Get the logged in user
@@ -24,8 +25,34 @@ router.post(
     check("email", "Please enter a valid email").isEmail(),
     check("password", "Password is required").exists(),
   ],
-  (req, res) => {
-    res.send("Log in user");
+  async (req, res) => {
+    //Express-validation
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      //sends the array of errors with the errors object.
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const {email,password}=req.body;
+
+    try{
+      let user=await User.findOne({email});
+   if(!user)
+   {
+     return res.status(400).json({msg:'Invalid Credentials'});
+   }
+
+   //comparing the hashed password with Bcrypt
+
+  const isMatch=await bcrypt.compare(password,user.password);
+
+  if(!isMatch)
+  {
+    res.status(400).json({msg:'Invaild Credentials'});
+  }
+    }catch(err)
+
+
   }
 );
 
