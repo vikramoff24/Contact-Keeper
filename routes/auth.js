@@ -15,7 +15,8 @@ const User = require("../models/User");
 
 //passing the middleware here. (Protected Route)
 router.get("/", auth, async (req, res) => {
-  try { //req.user is from the middleware.
+  try {
+    //req.user is from the middleware.
     const user = await User.findById(req.user.id).select("-password"); //.select help us to avoid something from the database.
     res.json(user);
   } catch (err) {
@@ -51,7 +52,6 @@ router.post(
       }
 
       //comparing the hashed password with Bcrypt
-
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
