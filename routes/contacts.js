@@ -24,7 +24,6 @@ router.get("/", auth, async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-
 // @route   POST api/contacts
 // @desc    Add new contact
 // @access  Private
