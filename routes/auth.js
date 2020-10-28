@@ -42,15 +42,12 @@ router.post(
       //sends the array of errors with the errors object.
       return res.status(400).json({ errors: errors.array() });
     }
-
     const { email, password } = req.body;
-
     try {
       let user = await User.findOne({ email });
       if (!user) {
         return res.status(400).json({ msg: "Invalid Credentials" });
       }
-
       //comparing the hashed password with Bcrypt
       const isMatch = await bcrypt.compare(password, user.password);
 
