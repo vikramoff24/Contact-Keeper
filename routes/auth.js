@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
 const { check, validationResult } = require("express-validator"); //from Express validator
 const bcrypt = require("bcryptjs"); //For Hashing the password.
 const jwt = require("jsonwebtoken");
