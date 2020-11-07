@@ -1,7 +1,7 @@
 import React from "react";
-import PropType from "prop-types";
+import PropTypes from "prop-types";
 
-const Navbar = () => {
+const Navbar = ({ title, icon }) => {
   return (
     <div className="navbar bg-primary">
       <h1>
@@ -12,13 +12,13 @@ const Navbar = () => {
   );
 };
 
-Navbar.PropType = {
+Navbar.propTypes = {
   title: PropTypes.string.isRequired,
-  icon: PropType.string, //not required compulsory
+  icon: PropTypes.string, //not required compulsory
 };
 
 Navbar.defaultProps = {
-  title: "Contact Keeper",
+  title: " Contact Keeper",
   icon: "fas fa-id-card-alt",
 };
 export default Navbar;
