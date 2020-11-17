@@ -55,7 +55,7 @@ const contactState = (props) => {
 
   //Clear Filter
 
-  //wrap entire application with context.
+  //wrap entire application with context in App.js file.
   return (
     <ContactContext.Provider value={{ contacts: state.contacts }}>
       {props.children}
