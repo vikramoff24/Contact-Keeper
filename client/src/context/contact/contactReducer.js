@@ -16,6 +16,13 @@ export default (state, action) => {
         ...state,
         contacts: [...state.contacts, action.payload], //as it is array of objects.
       };
+    case DELETE_CONTACT:
+      return {
+        ...state,
+        contacts: state.contacts.filter(
+          (contact) => contact.id !== action.payload
+        ), //checks into each object and filter according to contion
+      };
     default:
       return state;
   }
