@@ -18,3 +18,4 @@ export const ContactItems = ({ contact }) => {
     </div>
   );
 };
+export default ContactItems;
