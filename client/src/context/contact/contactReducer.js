@@ -23,6 +23,19 @@ export default (state, action) => {
           (contact) => contact.id !== action.payload
         ), //checks into each object and filter according to contion
       };
+
+    case SET_CURRENT:
+      return {
+        ...state,
+        current: action.payload,
+      };
+
+    case CLEAR_CURRENT:
+      return {
+        ...state,
+        current: null,
+      };
+
     default:
       return state;
   }

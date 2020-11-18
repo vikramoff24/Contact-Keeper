@@ -8,9 +8,14 @@ const ContactForm = () => {
     type: "personal",
   });
 
-  const { name, email, phone, type } = contact;
-
   const contactContext = useContext(ContactContext);
+  const { setCurrent, deleteContact, clearCurrrent } = contactContext;
+  if (contactContext.current !== null) {
+    const { contact } = contactContext;
+    const { name, email, phone, type } = contact;
+  } else {
+    const { name, email, phone, type } = contact;
+  }
   const onChange = (e) =>
     setContact({ ...contact, [e.target.name]: e.target.value });
 

@@ -5,8 +5,14 @@ export const ContactItems = ({ contact }) => {
   const { id, name, email, phone, type } = contact;
 
   const contactContext = useContext(ContactContext);
+  const { setCurrent, deleteContact, clearCurrrent } = contactContext;
   const onDelete = () => {
-    contactContext.deleteContact(id);
+    deleteContact(id);
+    clearCurrrent();
+  };
+
+  const handleClick = () => {
+    setCurrent(contact);
   };
   return (
     <div className="card bg-light">
@@ -35,7 +41,9 @@ export const ContactItems = ({ contact }) => {
         )}
       </ul>
       <p>
-        <button className="btn btn-dark btn-sm">Edit</button>
+        <button className="btn btn-dark btn-sm" onClick={handleClick}>
+          Edit
+        </button>
         <button className="btn btn-danger btn-sm" onClick={onDelete}>
           Delete
         </button>
