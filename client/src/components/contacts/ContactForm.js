@@ -3,7 +3,7 @@ import ContactContext from "../../context/contact/contactContext";
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
   const { addContact, current } = contactContext;
-  //Runs when application mounts
+  //Runs when application mounts //this is when we are setting the form data from the context.
   useEffect(() => {
     if (current !== null) {
       setContact(current);
@@ -15,7 +15,7 @@ const ContactForm = () => {
         type: "personal",
       });
     }
-  });
+  }, [contactContext, current]); //[] means this should run when contactContext or current is changed.
 
   const [contact, setContact] = useState({
     name: "",
