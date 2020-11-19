@@ -16,12 +16,20 @@ export default (state, action) => {
         ...state,
         contacts: [...state.contacts, action.payload], //as it is array of objects.
       };
+
+    case UPDATE_CONTACT:
+      return {
+        ...state,
+        contacts: state.contacts.map((contact) =>
+          contact.id === action.payload.id ? action.payload : contact
+        ),
+      };
     case DELETE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.filter(
           (contact) => contact.id !== action.payload
-        ), //checks into each object and filter according to contion
+        ), //checks into each object and filter according to condition
       };
 
     case SET_CURRENT:

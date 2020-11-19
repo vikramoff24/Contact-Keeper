@@ -5,10 +5,10 @@ export const ContactItems = ({ contact }) => {
   const { id, name, email, phone, type } = contact;
 
   const contactContext = useContext(ContactContext);
-  const { setCurrent, deleteContact, clearCurrrent } = contactContext;
+  const { setCurrent, deleteContact, clearCurrent } = contactContext;
   const onDelete = () => {
     deleteContact(id);
-    clearCurrrent();
+    clearCurrent();
   };
 
   const handleClick = () => {
