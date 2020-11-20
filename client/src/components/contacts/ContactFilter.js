@@ -1,5 +1,5 @@
 //Using useRef() hook.
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useContext } from "react";
 import ContactContext from "../../context/contact/contactContext";
 const ContactFilter = () => {
   const contactContext = useContext(ContactContext);
@@ -21,12 +21,14 @@ const ContactFilter = () => {
     }
   };
   return (
-    <from
-      ref={text}
-      type="text"
-      placeholder="Filter Contacts..."
-      onChange={onChange}
-    ></from>
+    <form>
+      <input
+        ref={text}
+        type="text"
+        placeholder="Filter Contacts..."
+        onChange={onChange}
+      />
+    </form>
   );
 };
 
