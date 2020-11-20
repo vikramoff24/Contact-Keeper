@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Fragment } from "react";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
+import Register from "./components/auth/Register";
 import ContactState from "./context/contact/ContactState";
 import AuthState from "./context/auth/authState";
 const App = () => {
