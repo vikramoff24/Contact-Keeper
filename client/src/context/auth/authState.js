@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 
-import authContext from "./authContext";
+import AuthContext from "./authContext";
 import authReducer from "./authReducer";
 import {
   REGISTER_SUCCESS,
@@ -13,7 +13,7 @@ import {
   CLEAR_ERRORS,
 } from "../types";
 
-const authState = (props) => {
+const AuthState = (props) => {
   const intialState = {
     token: localStorage.getItem("token"), //vanila javascript for accessing local storage in browser
     isAuthenticated: null,
@@ -51,4 +51,4 @@ const authState = (props) => {
   );
 };
 
-export default authState;
+export default AuthState;
