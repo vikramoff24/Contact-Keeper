@@ -11,7 +11,7 @@ const Register = () => {
   const { name, email, password, password2 } = user;
 
   const onChange = (e) => {
-    setUser({ ...user, [e.targer.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
   const onSubmit = (e) => {
     e.preventDefault();
@@ -43,7 +43,7 @@ const Register = () => {
         <div className="form-group">
           <label htmlFor="password2">Confirm Password</label>
           <input
-            type="password2"
+            type="password"
             name="password2"
             value={password2}
             onChange={onChange}
