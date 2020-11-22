@@ -4,11 +4,16 @@ import AlertContext from "../../context/alert/alertContext";
 const Login = (props) => {
   const authContext = useContext(AuthContext);
   const alertContext = useContext(AlertContext);
-  const { login, isAuthenticated } = authContext;
-
+  const { setAlert } = alertContext;
+  const { login, error, clearErrors, isAuthenticated } = authContext;
   useEffect(() => {
     if (isAuthenticated) {
       props.history.push("/"); //Redirecting to home page.
+    }
+
+    if (error === "Invalid Credentials") {
+      setAlert(error, "danger");
+      clearErrors();
     }
     // eslint-disable-next-line
   }, [isAuthenticated, props.history]);
@@ -25,7 +30,12 @@ const Login = (props) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    login(user);
+    if (email === "" || password === "") {
+      setAlert("Please fill in all fields", "danger");
+    }
+    {
+      login({ email, password });
+    }
   };
   return (
     <div className="form-container">
