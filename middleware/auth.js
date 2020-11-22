@@ -15,7 +15,7 @@ module.exports = function (req, res, next) {
   try {
     //decoded payload object of token
     const decoded = jwt.verify(token, config.get("jwtSecret"));
-    req.user = decoded.user; //this will asgin the vaule os req object of the protected route which runs the middle ware.
+    req.user = decoded.user; //this will assign the value of req object of the protected route which runs the middle ware.
     next();
   } catch (err) {
     res.status(401).json({ msg: "Token is not valid" });

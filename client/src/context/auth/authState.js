@@ -29,10 +29,14 @@ const AuthState = (props) => {
   // Load User
 
   const loadUser = async () => {
-    // @todo - load token into global headers
+    // @done - loaded token into global headers
+
+    if (localStorage.token) {
+      setAuthToken(localStorage.token); //we set into global becoz, we'll be using same token to access private routes.
+    }
 
     try {
-      const res = await axios.getUri("/api/auth");
+      const res = await axios.getUrl("/api/auth");
 
       dispatch({
         type: USER_LOADED,
@@ -46,6 +50,7 @@ const AuthState = (props) => {
   // Register User
   const register = async (formData) => {
     //type of data sent
+    //local header
     const config = {
       header: {
         "Content-Type": "application/json",
@@ -54,6 +59,8 @@ const AuthState = (props) => {
     try {
       const res = await axios.post("/api/users", formData, config);
       dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+      //loading the current user by accessign the current token ( Which is there in localstorage )
+      loadUser();
     } catch (err) {
       dispatch({ type: REGISTER_FAIL, payload: err.response.data.msg });
     }
