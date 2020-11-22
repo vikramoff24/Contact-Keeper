@@ -9,28 +9,31 @@ import {
   CLEAR_ERRORS,
 } from "../types";
 
-export defaut (state,action)=>
-{
-    switch(action)
-    {
-        case REGISTER_SUCCESS:
-            localStorage.setItem('token',action.payload.token);
-            return{
-                ...state,
-                ...action.payload,
-                isAuthenticated:true,
-                loading:false
-            }
-            case REGISTER_FAIL:
-                localStorage.removeItem('token');
+export default (state, action) => {
+  switch (action.type) {
+    case REGISTER_SUCCESS:
+      localStorage.setItem("token", action.payload.token);
+      return {
+        ...state,
+        ...action.payload,
+        isAuthenticated: true,
+        loading: false,
+      };
+    case REGISTER_FAIL:
+      localStorage.removeItem("token");
 
-                return {
-                    ...state,
-                    token:null,
-                    isAuthenticated:false,
-                    loading:false,
-                    user:null,
-                    error:action.payload
-                }
-    }
-}
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: false,
+        user: null,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+  }
+};

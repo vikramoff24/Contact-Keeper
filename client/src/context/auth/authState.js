@@ -27,8 +27,10 @@ const AuthState = (props) => {
 
   // Load User
 
+  const loadUser = () => console.log("loadUser");
+
   // Register User
-  const register = async (FormData) => {
+  const register = async (formData) => {
     //type of data sent
     const config = {
       header: {
@@ -43,11 +45,11 @@ const AuthState = (props) => {
     }
   };
   // Login User
-
+  const login = () => console.log("login");
   // Logout
-
+  const logout = () => console.log("logout");
   // Clear Error
-
+  const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
   //wrap entire application with context in App.js file.
   return (
     <AuthContext.Provider
@@ -57,6 +59,11 @@ const AuthState = (props) => {
         loading: state.loading,
         user: state.user,
         error: state.error,
+        register,
+        loadUser,
+        login,
+        logout,
+        clearErrors,
       }}
     >
       {props.children}
