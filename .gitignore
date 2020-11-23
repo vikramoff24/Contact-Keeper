@@ -1,3 +1,21 @@
+node_modules/
+/config/production.json
+/config/default.json
+
+/client/build
+
+.DS_Store
+/client/.env.local
+/client/.env.development.local
+/client/.env.test.local
+/client/.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+
 
 client/node_modules/.cache/terser-webpack-plugin/content-v2/sha512/27/7f/bec7bb9b7c8c3811d4491ce1b92de0bffefec20f98704381402be1bb0f4f5c450b120a999283b5c07c61d1ff906bb1ec1dd9e584a229b99a9c15a2918028
 client/node_modules/.cache/terser-webpack-plugin/content-v2/sha512/84/8a/083defcc25e5861bdbf850e5693fd090017e6a87db556db0905e84317efdbfff87b21ed820c5ee11dd7ec8e99132317a45b1e9b19643aa3b2fab1dccfe10
