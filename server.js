@@ -4,7 +4,6 @@ const path = require("path"); //built in package.
 const app = express();
 
 // Connect Database
-connectDB();
 
 // Init Middleware
 app.use(express.json({ extended: false })); //accept json data and use req.body
