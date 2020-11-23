@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import { SET_ALERT } from "../../context/types";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
 const Register = (props) => {
