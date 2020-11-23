@@ -10,7 +10,6 @@ const Login = (props) => {
     if (isAuthenticated) {
       props.history.push("/"); //Redirecting to home page.
     }
-
     if (error === "Invalid Credentials") {
       setAlert(error, "danger");
       clearErrors();
@@ -32,8 +31,7 @@ const Login = (props) => {
     e.preventDefault();
     if (email === "" || password === "") {
       setAlert("Please fill in all fields", "danger");
-    }
-    {
+    } else {
       login({ email, password });
     }
   };
