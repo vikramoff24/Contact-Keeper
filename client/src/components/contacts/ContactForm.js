@@ -36,6 +36,7 @@ const ContactForm = () => {
     } else {
       updateContact(contact);
     }
+
     setContact({
       name: "",
       email: "",
