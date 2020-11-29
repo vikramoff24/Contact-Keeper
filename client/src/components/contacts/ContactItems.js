@@ -3,14 +3,12 @@ import PropTypes from "prop-types";
 import ContactContext from "../../context/contact/contactContext";
 export const ContactItems = ({ contact }) => {
   const { _id, name, email, phone, type } = contact;
-
   const contactContext = useContext(ContactContext);
   const { setCurrent, deleteContact, clearCurrent } = contactContext;
   const onDelete = () => {
     deleteContact(_id);
     clearCurrent();
   };
-
   const handleClick = () => {
     setCurrent(contact);
   };
