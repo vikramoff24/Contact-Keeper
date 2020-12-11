@@ -53,7 +53,6 @@ const Login = (props) => {
             onChange={onChange}
           />
         </div>
-
         <input
           type="submit"
           value="Login"
