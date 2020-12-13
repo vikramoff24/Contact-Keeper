@@ -27,7 +27,6 @@ const AuthState = (props) => {
   //actions
 
   // Load User
-
   const loadUser = async () => {
     // @done - loaded token into global headers
 
